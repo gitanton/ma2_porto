@@ -1,0 +1,87 @@
+<?php
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_M2_MULTIPLE_WISHLISTS
+ * @copyright  Copyright (c) 2016 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+ 
+/** @var \Itoris\MultipleWishlists\Block\Customer\Wishlist\Items $block */
+$wishlist = $block->getCurrentWishslist();
+$items = $block->getItems();
+$total = 0;
+?>
+<div class="mwishlist-actions">
+	<label><?php echo __('Wishlist') ?>:</label>
+	<?php if ($wishlist->getId()) : ?>
+	<input type="input" name="mwishlist_name" id="mwishlist_name" value="<?php echo $block->escapeHtml($wishlist->getTitle()) ?>" onkeypress="event.stopPropagation(); if (event.keyCode == 13) {jQuery('#mwishlist_rename')[0].click(); return false;}" />
+	<button class="action primary" type="button" id="mwishlist_rename" title="<?php echo __('Rename') ?>" onclick="window.itorisMultipleWishlists.renameWishlist()"><span><?php echo __('Rename') ?></span></button>
+	<button class="action remove" type="button" id="mwishlist_remove" title="<?php echo __('Remove Wishlist') ?>" onclick="window.itorisMultipleWishlists.removeWishlist()"><span><?php echo __('Remove Wishlist') ?></span></button>
+	<?php else: ?>
+		<b><?php echo $block->escapeHtml($wishlist->getTitle()) ?></b>
+	<?php endif; ?>
+</div>
+<div class="mwishlist-items">
+    <?php if (count($items)): ?>
+	<?php foreach ($items as $item): ?>
+		<?php $product = $item->getProduct(); ?>
+        <?php $total += (float)$product->getFinalPrice() * $item->getQty(); ?>
+		<div class="mwishlist-item">
+			<a class="mwishlist-product-item-photo" href="<?php echo $product->getProductUrl($item) ?>" title="<?php echo $block->escapeHtml($product->getName()) ?>">
+				<img src="<?php echo $block->getProductImage($product)->resize(180, 180)->getUrl() ?>" alt="<?php echo $block->escapeHtml($product->getName()) ?>" />
+			</a>
+			<div class="mwishlist-product-controls">
+				<div class="mwishlist-product-item-name">
+					<a href="<?php echo $product->getProductUrl($item) ?>" title="<?php echo $block->escapeHtml($product->getName()) ?>" class="mwishlist-product-item-link">
+						<?php echo $block->escapeHtml($product->getName()) ?>
+					</a>
+				</div>
+				<div class="mwishlist-product-item-actions">
+					<a class="action copy" href="javascript://" onclick="window.itorisMultipleWishlists.copyItem(this, <?php echo $item->getId() ?>)" title="<?php echo __('Copy To Wishlist') ?>"><span><?php echo __('Copy To Wishlist') ?></span></a>
+					<a class="action move" href="javascript://" onclick="window.itorisMultipleWishlists.moveItem(this, <?php echo $item->getId() ?>)" title="<?php echo __('Move To Wishlist') ?>"><span><?php echo __('Move To Wishlist') ?></span></a>
+					<?php echo $block->getChildBlock('customer.wishlist.item.inner')->getChildBlock('customer.wishlist.item.actions')->setItem($item)->toHtml(); ?>
+				</div>
+				<div class="mwishlist-product-item-comment-box">
+					<div class="control">
+						<textarea id="mwishlist-product-item-comment-<?php echo $item->getWishlistItemId() ?>" placeholder="<?php echo $this->helper('Magento\Wishlist\Helper\Data')->defaultCommentString() ?>" name="description[<?php echo $item->getWishlistItemId() ?>]" title="<?php echo __('Comment') ?>" class="mwishlist-product-item-comment"><?php echo($block->escapeHtml($item->getDescription())) ?></textarea>
+					</div>
+				</div>
+				<div class="mwishlist-product-item-price-box">
+					<?php echo $block->getChildBlock('customer.wishlist.item.price')->setItem($item)->toHtml(); ?>
+				</div>
+				<div class="mwishlist-product-item-cart">
+					<?php echo $block->getChildBlock('customer.wishlist.item.inner')->getChildBlock('customer.wishlist.item.cart')->setItem($item)->toHtml(); ?>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+	<?php endforeach; ?>
+    <?php else: ?>
+        <div class="message info empty">
+            <span><?php echo __('This Wish List has no Items');?></span>
+        </div>
+    <?php endif; ?>	
+</div>
+<?php if ($total > 0) : ?>
+<div class="mwishlist-totals">
+    <span class="mwishlist-total"><?php echo __('Wishlist Total: ') ?></span>
+    <span class="price"><?php echo $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($total, true, false); ?></span>
+</div>
+<?php endif; ?>

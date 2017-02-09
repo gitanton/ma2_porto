@@ -1,0 +1,90 @@
+
+.products-line .product-item {
+    clear: both;
+    display: block;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+}
+.products-line .product-item .product-item-details{ overflow: hidden; }
+.products-line .product-item .product-item-name, 
+.products-line .product-item .price-box, 
+.products-line .product-item .product-item-inner {
+    float: left;
+    margin-right: 0;
+    margin-top: 0;
+    vertical-align: middle;
+    
+    box-sizing: border-box;
+}
+.products-line .product-item .product-item-name {
+    margin-top: 5px;
+    width: 20%;
+    text-align: left;
+}
+.products-line .product-item .price-box {
+    width: 22%;
+    text-align: center;
+	margin-bottom: 0;
+}
+.products-line .product-item .product-item-inner {
+    width: 50%;
+    padding-right: 0; text-align:right;
+}
+.products-line .product-item .product-item-inner .product-item-actions {
+    width: 100%;
+    box-sizing: border-box;
+}
+.products-line .product-item .product-item-inner .product-item-actions,
+.products-line .product-item .product-item-details .product-item-description{ float:left; margin-right:0; }
+.products-line .product-item .product-item-inner .product-item-actions .actions-primary,
+.products-line .product-item .product-item-inner .product-item-actions .actions-secondary{ /*float:left;*/ display:inline-block; margin-right:10px; }  
+.products-line .product-item .product-item-details .product-item-description {
+   float: left;
+    width: 30%;
+    margin: 0;
+    padding: 5px 0;
+    text-align: left;
+}
+.products-line .product-item .product-item-details .product-item-description p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    width: 48%;
+    vertical-align: middle;
+}
+.products-line .product-item .product-item-details .product-item-description .action.more {
+    display: inline-block;
+    vertical-align: middle;
+}
+.toolbar-products .mode-line::before {
+    content: "\f827"; line-height:16px;
+    height: 25px;
+    padding: 6px; font-family: "porto-icons";
+}
+
+.product-item-inner input[type="number"]{ width:35px;text-align:center; padding:0;}
+.product-item-inner .field.qty{ display:inline-block; margin-right:10px;}
+.product-item-inner button.tocart { display:inline-block;}
+
+
+
+@media only screen and (max-width: 767px) {
+    .products-line .product-item{ min-width: 580px; }
+	.products-line {
+		overflow-x: auto;
+	}
+}
+
+header.page-header.type10 .panel.wrapper .header.panel > .header.links {
+    padding-left: 1px;
+    padding-right: 2px;
+}
+
+
+
+a.fast-link {
+    color: #fff;
+}
+

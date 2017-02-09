@@ -1,0 +1,66 @@
+<?php
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_M2_MULTIPLE_WISHLISTS
+ * @copyright  Copyright (c) 2016 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+ 
+$wishlists = $block->getWishlists();
+?>
+<div class="mwishlist_popup_header">Please select a wishlist</div>
+<div class="mwishlist_popup_body">
+	<?php
+		foreach($wishlists as $wishlistId => $wishlistData) {
+		?>
+			<div class="mwishlist_row">
+				<input type="radio" id="mwishlist_id<?php echo $wishlistId ?>" name="mwishlist_id" value="<?php echo $wishlistId ?>" <?php echo $wishlistId == 0 ? 'checked="checked"' : '' ?> />
+				<label for="mwishlist_id<?php echo $wishlistId ?>">
+					<?php echo htmlspecialchars($wishlistData->name) ?>
+					<span class="mwishlist_qty">(<?php echo (int) $wishlistData->qty ?>)</span>
+				</label>
+			</div>
+		<?php
+		}
+	?>
+	<div class="mwishlist_row">
+		<input type="radio" id="mwishlist_id-1" name="mwishlist_id" value="-1" />
+		<label for="mwishlist_id-1">
+			<?php echo __('OR create a new wishlist') ?>
+		</label>
+		<input type="text" id="mwishlist_new" name="mwishlist_new" disabled="disabled" value="" title="<?php echo __('Enter new wishlist name here'); ?>" />
+	</div>
+</div>
+<div class="mwishlist_popup_footer">
+	<button type="button" id="mwishlist_popup_cancel" class="action" title="<?php echo __('Cancel') ?>">
+		<span><?php echo __('Cancel') ?></span>
+	</button>
+	<button type="button" id="mwishlist_popup_add" class="action primary" title="<?php echo __('Add to Wishlist') ?>">
+		<span><?php echo __('Add to Wishlist') ?></span>
+	</button>
+	<div style="clear:both"></div>
+</div>
+<script type="text/javascript">
+	require([
+		'jquery'
+	], function (jQuery) {
+		window.itorisMultipleWishlists.initialize(<?php echo json_encode($wishlists) ?>, <?php echo json_encode($block->getConfig()) ?>);
+	});
+</script>

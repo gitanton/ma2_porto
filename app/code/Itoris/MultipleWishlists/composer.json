@@ -1,0 +1,23 @@
+{
+    "name": "itoris/multiple-wishlists",
+    "description": "Allow customers create multiple wishlists",
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.3",
+	"authors": [
+		{
+			"name": "ITORIS INC",
+			"email": "sales@itoris.com",
+			"homepage": "https://www.itoris.com/",
+			"role": "Developer"
+		}
+	],
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Itoris\\MultipleWishlists\\": ""
+        }
+    }
+}

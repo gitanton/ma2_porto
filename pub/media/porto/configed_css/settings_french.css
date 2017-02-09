@@ -1,0 +1,32 @@
+/**
+ * WARNING: Do not change this file. Your changes will be lost.
+ * 2017-02-07 10:33:57 */
+body.boxed {
+}
+@media (min-width: 768px) {
+    .page-layout-1column .product-info-main, .page-layout-2columns-left .product-info-main, .page-layout-2columns-right .product-info-main, .page-layout-3columns .product-info-main {
+        width: 49%;
+    }
+    .page-layout-1column .product.media, .page-layout-2columns-left .product.media, .page-layout-2columns-right .product.media, .page-layout-3columns .product.media {
+        width: 49%;
+    }
+}
+@media (max-width: 480px){
+    .products-grid .product-item {
+        float: none;
+        width: 100%;
+        padding: 10px 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .page-header.type10 .sw-megamenu.navigation.side-megamenu {
+        padding: 0;
+    }
+}
+.footer-middle .block.newsletter input {
+    background-color: #fff;
+}
+.footer-middle .block.newsletter .action.subscribe {
+    background-color: #000;
+}

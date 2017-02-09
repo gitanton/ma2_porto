@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_M2_MULTIPLE_WISHLISTS
+ * @copyright  Copyright (c) 2016 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="itoris_extensions" translate="label" sortOrder="101">
+            <label>ITORIS Extensions</label>
+        </tab>
+        <section id="itoris_multiplewishlists" translate="label" type="text" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Multiple Wishlists</label>
+            <tab>itoris_extensions</tab>
+            <resource>Magento_Backend::itoris_multiplewishlists</resource>
+            <group id="general" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Extension Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="after_add_to_cart" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>After Product Added to Cart</label>
+                    <source_model>Itoris\MultipleWishlists\Model\Config\Source\AfterAddToCart</source_model>
+                </field>
+                <field id="after_wishlist_selected" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>After Wishlist Selected</label>
+                    <source_model>Itoris\MultipleWishlists\Model\Config\Source\AfterWishlistSelected</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

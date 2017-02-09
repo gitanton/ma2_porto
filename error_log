@@ -1,0 +1,7 @@
+[06-Feb-2017 12:27:39 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 72 bytes) in /home2/magehire/public_html/porto/vendor/oyejorge/less.php/lib/Less/Parser.php on line 2462
+[06-Feb-2017 14:53:13 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 1324898 bytes) in /home2/magehire/public_html/porto/vendor/magento/framework/View/Asset/Bundle.php on line 192
+[07-Feb-2017 07:19:33 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 1541855 bytes) in /home2/magehire/public_html/porto/vendor/magento/framework/View/Asset/Bundle.php on line 192
+[07-Feb-2017 07:55:54 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 67840 bytes) in /home2/magehire/public_html/porto/vendor/magento/module-review/Setup/InstallSchema.php on line 565
+[07-Feb-2017 07:57:44 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 67840 bytes) in /home2/magehire/public_html/porto/vendor/magento/module-review/Setup/InstallSchema.php on line 565
+[07-Feb-2017 08:04:18 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 1541855 bytes) in /home2/magehire/public_html/porto/vendor/magento/framework/View/Asset/Bundle.php on line 192
+[07-Feb-2017 09:47:15 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 1324898 bytes) in /home2/magehire/public_html/porto/vendor/magento/framework/View/Asset/Bundle.php on line 192
