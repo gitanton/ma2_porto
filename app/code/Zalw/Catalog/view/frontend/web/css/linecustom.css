@@ -86,5 +86,12 @@ header.page-header.type10 .panel.wrapper .header.panel > .header.links {
 
 a.fast-link {
     color: #fff;
+    background-color: #101010;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin: 5px 2px;
+    vertical-align: middle;
+    position: relative;
+	    font-size: 12px;
 }
 
