@@ -15,35 +15,40 @@
     $_helper = $this->helper('Smartwave\Megamenu\Helper\Data');
     $_portohelper = $this->helper('Smartwave\Porto\Helper\Data');
     
-    $urls = array("My Account Home" => $this->getUrl("customer/account/"),"Product" => $this->getUrl(),"My orders" => $this->getUrl("sales/order/history/"),"My Wishlists" => $this->getUrl("wishlist/") ,"Invoices and Payments" => $this->getUrl("") ,"My quotes" => $this->getUrl("") ,"Account setup" => $this->getUrl("customer/account/edit/"));
-    $icons = array("Home.png", "Products.png","","Multiple Wishlist.png","Bills & Payments.png","My Quote.png","Account Setup.png");
+    $categories = $_helper->getFirstLevelCategories();
 
     $custom_styles='<style type="text/css">';
 ?>
 <?php if($_portohelper->getConfig('porto_settings/general/layout') == "full_width" && $_portohelper->getConfig('porto_settings/general/category_list_on_left')): ?>
-
-    <div class="onepage-cat category-list">
-        <ul>
-        <?php
-            $i = 0;
-            foreach($urls as $name => $url) {
-                $cat_id = $i;
-				
+<div class="onepage-cat category-list">
+    <ul>
+    <?php
+        $i = 0;
+        foreach($categories as $category) {
+            $cat_id = $category->getId();
+            $cat_model = $_helper->getCategoryModel($cat_id);
+            if($category->getIsActive() && !$cat_model->getData("sw_ocat_hide_this_item")) {
                 $icon = '<em class="porto-icon-circle-empty"></em>';
-				
-				echo '<li data-index="'.$i.'"><a href="'.$url.'" data-cat="'.$i.'"><img src="'.$this->getViewFileUrl('images/'.$icons[$i]).'"><span>'.$name.'</span></a></li>';
-				$i++;
-                
+                if($cat_icon_img=$cat_model->getData("sw_ocat_category_icon_image")) {
+                    $icon = '<img src="'.'catalog/category/'.$cat_icon_img.'" alt=""/>';
+                } else if($cat_font_icon=$cat_model->getData("sw_ocat_category_font_icon")){
+                    $icon = '<em class="'.$cat_font_icon.'"></em>';
+                }
+                if($hover_bg_color = $cat_model->getData("sw_ocat_category_hoverbgcolor"))
+                    $custom_styles .= '.onepage-category .category-list > ul > li > a[data-cat="'.$cat_id.'"]:hover,.onepage-category .category-list > ul > li > a[data-cat="'.$cat_id.'"].active{background-color:'.$hover_bg_color.';}.onepage-category .category-list > ul > li > a[data-cat="'.$cat_id.'"]:hover:after,.onepage-category .category-list > ul > li > a[data-cat="'.$cat_id.'"].active:after{border-left-color:'.$hover_bg_color.';}';
+                echo '<li data-index="'.$i.'"><a href="'.$cat_model->getUrl().'" data-cat="'.$cat_id.'">'.$icon.'<span>'.$category->getName().'</span></a></li>';
+                $i++;
             }
-        ?>
-        </ul>
-        <?php
-            $custom_styles .= '</style>';
-            echo $custom_styles;
-        ?>
-    </div>
-	
-    <script type="text/javascript">
+        }
+    ?>
+    </ul>
+    <?php
+        $custom_styles .= '</style>';
+        echo $custom_styles;
+    ?>
+</div>
+
+<script type="text/javascript">
 require([
     'jquery'
 ], function ($) {
@@ -81,5 +86,4 @@ require([
     });
 });
 </script>
-</div>
 <?php endif; ?>

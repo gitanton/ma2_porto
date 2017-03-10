@@ -1,5 +1,5 @@
 <?php
-    $header_type = $this->getConfig('porto_settings/header/header_type');
+    $header_type = $this->getConfig('porto_settings/header/header_type');	$_objectManager = \Magento\Framework\App\ObjectManager::getInstance(); //instance of\Magento\Framework\App\ObjectManager	$storeManager = $_objectManager->get('Magento\Store\Model\StoreManagerInterface'); 	$currentStore = $storeManager->getStore();
 ?>
 <header class="page-header type<?php echo $header_type; ?>">
 <?php echo $this->getChildHtml("header_customer_form_login"); ?>
@@ -34,13 +34,13 @@
                     <a class="top-links-icon" href="javascript:void(0)">links</a>
                     <?php echo $this->getChildHtml("header.links"); ?>
                 </div>
-                <?php echo $this->getChildHtml("custom_block"); ?>
+                <?php //echo $this->getChildHtml("custom_block"); ?>
                 <div class="search-area">
                     <a href="javascript:void(0)" class="search-toggle-icon"><i class="porto-icon-search"></i></a>
                     <?php echo $this->getChildHtml("top.search"); ?>
                 </div>
             </div>
-            <div class="bottom-panel">
+            <div class="bottom-panel">				<a class="fast-link" href="<?php echo $this->getUrl("fast-order"); ?>"><img src="<?php echo $currentStore->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA); ?>icons/icon1.png" title="Fast Order" style="width: 23px;"> Fast Order</a>       
                 <?php echo $this->getChildHtml("currency"); ?>
                 <?php echo $this->getChildHtml("store_language"); ?>
                 <?php echo $this->getChildHtml("minicart"); ?>
@@ -182,8 +182,7 @@
         <?php echo $this->getChildHtml("skip_to_content"); ?>
         <?php echo $this->getChildHtml("currency"); ?>
         <?php echo $this->getChildHtml("store_language"); ?>
-		 <a class="fast-link" href="<?php echo $this->getUrl("fast-order"); ?>"><img src="http://porto.magehire.com/pub/media/icons/icon1.png" title="Fast Order" style="width: 23px;"> Fast Order</a>
-        <?php echo $this->getChildHtml("minicart"); ?>
+		<?php echo $this->getChildHtml("minicart"); ?>
     </div>
     <div class="header content">
     <?php echo $this->getChildHtml("logo"); ?>

@@ -185,7 +185,6 @@
 
 </IfModule>
 
-
 ############################################
 ## Prevent character encoding issues from server overrides
 ## If you still have problems, use the second line instead
@@ -327,3 +326,7 @@ ErrorDocument 403 /pub/errors/404.php
     </FilesMatch>
 
 </IfModule>
+RewriteCond %{HTTP_HOST} ^porto\.magehire\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.porto\.magehire\.com$
+RewriteRule ^/?$ "http\:\/\/porto\.magehire\.com\/" [R=301,L]
+
