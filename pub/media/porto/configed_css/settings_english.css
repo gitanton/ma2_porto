@@ -1,6 +1,6 @@
 /**
  * WARNING: Do not change this file. Your changes will be lost.
- * 2017-03-04 10:40:07 */
+ * 2017-03-10 08:25:16 */
 body.boxed {
 }
 @media (min-width: 768px) {
@@ -173,4 +173,9 @@ body.boxed {
     margin-left: -60px;
     background: transparent;
     border: 0;
+}header.page-header.sticky-header .nav-sections {
+    margin: 30px 0 0 !important;
+    padding: 0 !important;
+    top: 0 !important;
+    position: relative !important;
 }
